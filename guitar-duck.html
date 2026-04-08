@@ -12,136 +12,135 @@
     <meta property="og:type" content="website">
 
     <style>
+        /* 基礎樣式重置 */
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         
         body, html {
             margin: 0; padding: 0; width: 100%; height: 100%;
-            background-color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #f0f2f5; /* 電腦版外框底色 */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            display: flex; align-items: center; justify-content: center;
         }
 
-        /* 主容器：預設為手機直向 (Column) */
-        .main-wrapper {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            height: 100%;
-            max-width: 100%;
+        /* 名片容器 */
+        .card-container {
+            background-color: #ffffff;
+            width: 100%; 
+            height: 100%; 
+            max-width: 450px; /* 電腦版寬度限制 */
             margin: 0 auto;
-            overflow: hidden;
-        }
-
-        /* 左側/上方：Logo 區 */
-        .brand-section {
-            background-color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            flex: 0 0 120px; /* 手機版高度固定 */
-        }
-        .company-logo {
-            max-width: 250px;
-            width: 80%;
-            height: auto;
-        }
-
-        /* 右側/下方：內容區 */
-        .content-section {
-            flex: 1;
-            padding: 20px 30px 40px;
-            display: flex;
+            padding: 30px 25px;
+            display: flex; 
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: space-between; /* 均勻分佈內容，防止捲動 */
             text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
+        /* 當螢幕夠大時，模擬手機殼造型 */
+        @media (min-height: 750px) and (min-width: 500px) {
+            .card-container {
+                height: 780px;
+                border-radius: 30px;
+            }
+        }
+
+        /* 1. 公司 Logo (已加大) */
+        .brand-header { 
+            height: 90px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin-bottom: 5px;
+        }
+        .company-logo { 
+            max-height: 100%; 
+            max-width: 280px;
+            width: auto;
+            display: block;
+        }
+        
+        /* 2. 個人照片 */
         .profile-img {
-            width: 140px; height: 140px; border-radius: 50%;
-            object-fit: cover; margin: 0 auto;
-            border: 3px solid #f0f0f0;
+            width: 150px; 
+            height: 150px; 
+            border-radius: 50%;
+            object-fit: cover; 
+            margin: 0 auto;
+            border: 3px solid #f8f8f8;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
-        .name-title h1 { font-size: 28px; margin: 15px 0 5px; font-weight: 800; color: #1a1a1a; }
-        .name-title p { font-size: 14px; color: #666; margin: 0; letter-spacing: 1.5px; text-transform: uppercase; }
+        /* 3. 姓名職稱 */
+        .name-title h1 { font-size: 30px; margin: 15px 0 5px; font-weight: 800; color: #1a1a1a; }
+        .name-title p { font-size: 14px; color: #666; margin: 0; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; }
 
+        /* 4. 聯絡資訊 */
         .contact-info { font-size: 16px; line-height: 1.8; margin: 15px 0; }
-        .contact-link { color: #000; text-decoration: none; display: block; padding: 5px 0; font-weight: 500; }
-        .address-link { color: #4285F4; text-decoration: none; font-size: 13px; display: block; line-height: 1.4; margin-top: 5px; }
-
-        .add-btn {
-            background-color: #000000; color: #ffffff;
-            width: 100%; padding: 18px 0; border-radius: 40px;
-            text-decoration: none; font-size: 18px; font-weight: bold;
-            display: block; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        .contact-link { color: #000; text-decoration: none; display: block; padding: 4px 0; font-weight: 500; }
+        
+        .address-link { 
+            color: #4285F4; 
+            text-decoration: none; 
+            font-size: 13px; 
+            display: block; 
+            margin-top: 8px; 
+            line-height: 1.4;
         }
 
-        .website-link { display: inline-block; margin-top: 15px; font-size: 13px; color: #999; text-decoration: none; }
-
-        /* 💻 電腦版橫向佈局 (螢幕寬度大於 768px 時觸發) */
-        @media (min-width: 768px) {
-            body { background-color: #f0f2f5; display: flex; align-items: center; justify-content: center; }
-            
-            .main-wrapper {
-                flex-direction: row; /* 變成左右並排 */
-                max-width: 900px;
-                height: 550px;
-                border-radius: 20px;
-                box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-                background-color: #fff;
-            }
-
-            .brand-section {
-                flex: 1; /* 左邊佔一半 */
-                background-color: #fafafa; /* 左側稍微加一點底色區分 */
-                height: 100%;
-                border-right: 1px solid #eee;
-            }
-            
-            .company-logo {
-                max-width: 350px; /* 電腦版 Logo 可以更大 */
-            }
-
-            .content-section {
-                flex: 1; /* 右邊佔一半 */
-                padding: 50px;
-                justify-content: center; /* 電腦版內容垂直居中 */
-            }
-            
-            .contact-info { margin: 30px 0; }
+        /* 5. 底部按鈕 */
+        .action-area { width: 100%; }
+        .add-btn {
+            background-color: #000000; 
+            color: #ffffff;
+            width: 100%; 
+            padding: 18px 0; 
+            border-radius: 40px;
+            text-decoration: none; 
+            font-size: 18px; 
+            font-weight: bold;
+            display: block; 
+            transition: 0.2s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .add-btn:active { transform: scale(0.96); opacity: 0.9; }
+        
+        .website-link { 
+            display: inline-block; 
+            margin-top: 15px; 
+            font-size: 14px; 
+            color: #999; 
+            text-decoration: none; 
         }
     </style>
 </head>
 <body>
 
-<div class="main-wrapper">
-    <div class="brand-section">
+<div class="card-container">
+    <div class="brand-header">
         <img src="MF_logo.png" class="company-logo" alt="MUSICFRIENDLY">
     </div>
 
-    <div class="content-section">
-        <div>
-            <img src="guitar-duck.png" class="profile-img" alt="Guitar Duck">
-            <div class="name-title">
-                <h1>Guitar Duck</h1>
-                <p>Marketing Manager</p>
-            </div>
-        </div>
+    <img src="guitar-duck.png" class="profile-img" alt="Guitar Duck">
 
-        <div class="contact-info">
-            <a href="tel:+85255785523" class="contact-link">T: +852 5578 5523</a>
-            <a href="https://wa.me/85255785523" class="contact-link">WhatsApp: +852 5578 5523</a>
-            <a href="mailto:enquiry@musicfriendly.com" class="contact-link">enquiry@musicfriendly.com</a>
-            
-            <a href="https://www.google.com/maps/search/?api=1&query=Ka+Ming+Court+Blocks+C%26D,+688-690+Castle+Peak+Rd,+Lai+Chi+Kok" target="_blank" class="address-link">
-                📍 Flat D1, 4/F, Ka Ming Court Blocks C&D, <br>688-690 Castle Peak Rd, Lai Chi Kok
-            </a>
-        </div>
+    <div class="name-title">
+        <h1>Guitar Duck</h1>
+        <p>Marketing Manager</p>
+    </div>
 
-        <div class="action-area">
-            <a href="Test%20only_20260406.vcf" class="add-btn">ADD TO CONTACTS</a>
-            <a href="https://musicfriendly.com/" class="website-link">musicfriendly.com</a>
-        </div>
+    <div class="contact-info">
+        <a href="tel:+85255785523" class="contact-link">T: +852 5578 5523</a>
+        <a href="https://wa.me/85255785523" class="contact-link">WhatsApp: +852 5578 5523</a>
+        <a href="mailto:enquiry@musicfriendly.com" class="contact-link">enquiry@musicfriendly.com</a>
+        
+        <a href="https://www.google.com/maps/search/?api=1&query=Ka+Ming+Court+688-690+Castle+Peak+Rd+Lai+Chi+Kok" target="_blank" class="address-link">
+            📍 Flat D1, 4/F, Ka Ming Court Blocks C&D, <br>688-690 Castle Peak Rd, Lai Chi Kok
+        </a>
+    </div>
+
+    <div class="action-area">
+        <a href="Test%20only_20260406.vcf" class="add-btn">ADD TO CONTACTS</a>
+        <a href="https://musicfriendly.com/" class="website-link">musicfriendly.com</a>
     </div>
 </div>
 
