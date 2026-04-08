@@ -24,26 +24,26 @@
             width: 100%; height: 100%; max-width: 450px; 
             margin: 0 auto; padding: 30px 25px;
             display: flex; flex-direction: column; justify-content: space-between;
-            text-align: center; position: relative;
+            text-align: center;
         }
 
         @media (min-height: 750px) and (min-width: 500px) {
             .card-container { height: 780px; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         }
 
-        .brand-header { height: 80px; display: flex; align-items: center; justify-content: center; margin-bottom: 5px; }
-        .company-logo { max-height: 100%; max-width: 250px; width: auto; }
+        .brand-header { height: 85px; display: flex; align-items: center; justify-content: center; margin-bottom: 5px; }
+        .company-logo { max-height: 100%; max-width: 280px; width: auto; }
         
-        .profile-img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin: 0 auto; border: 3px solid #f8f8f8; }
+        .profile-img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin: 0 auto; border: 3px solid #f8f8f8; }
 
-        .name-title h1 { font-size: 28px; margin: 15px 0 5px; font-weight: 800; color: #1a1a1a; }
+        .name-title h1 { font-size: 30px; margin: 15px 0 5px; font-weight: 800; color: #1a1a1a; }
         .name-title p { font-size: 14px; color: #666; margin: 0; letter-spacing: 1px; }
 
-        .contact-info { font-size: 16px; line-height: 2; margin: 15px 0; }
-        .contact-link { color: #000; text-decoration: none; display: block; padding: 5px 0; font-weight: 500; }
+        .contact-info { font-size: 16px; line-height: 1.8; margin: 15px 0; }
+        .contact-link { color: #000; text-decoration: none; display: block; padding: 6px 0; font-weight: 500; }
         
-        /* 微信按鈕特殊顏色 */
-        .wechat-link { color: #07C160; font-weight: bold; cursor: pointer; }
+        /* 微信按鈕樣式 */
+        .wechat-link { color: #07C160; font-weight: bold; cursor: pointer; border: 1px dashed #07C160; border-radius: 10px; margin: 5px 0; }
 
         .action-area { width: 100%; }
         .add-btn {
@@ -56,11 +56,11 @@
         /* 微信彈窗 (Overlay) */
         #wechat-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85); z-index: 9999;
+            background: rgba(0,0,0,0.92); z-index: 9999;
             flex-direction: column; align-items: center; justify-content: center; color: #fff;
         }
-        #wechat-overlay img { width: 260px; height: 260px; border-radius: 10px; margin-bottom: 20px; border: 5px solid #fff; }
-        .close-hint { font-size: 14px; color: #bbb; margin-top: 20px; }
+        #wechat-overlay img { width: 260px; height: 260px; border-radius: 10px; margin-bottom: 20px; border: 4px solid #fff; }
+        .copy-hint { background: #333; padding: 8px 15px; border-radius: 5px; font-size: 14px; margin-top: 10px; cursor: pointer; }
 
         .website-link { display: inline-block; margin-top: 15px; font-size: 13px; color: #999; text-decoration: none; }
     </style>
@@ -81,29 +81,52 @@
 
     <div class="contact-info">
         <a href="tel:+85255785523" class="contact-link">電話: +852 5578 5523</a>
-        <div class="contact-link wechat-link" onclick="showWeChat()">加微信好友 (點擊掃碼)</div>
+        
+        <div class="contact-link wechat-link" onclick="showWeChat()">微信: aquaeel (點擊掃碼/複製)</div>
+        
         <a href="mailto:enquiry@musicfriendly.com" class="contact-link">郵箱: enquiry@musicfriendly.com</a>
-        <div style="font-size: 13px; color: #888; margin-top: 10px;">
-            地址: 荔枝角青山道688-690號嘉名大廈CD座4樓D1室
+        <div style="font-size: 12px; color: #888; margin-top: 10px; line-height: 1.4;">
+            📍 荔枝角青山道688-690號嘉名大廈<br>CD座4樓D1室
         </div>
     </div>
 
     <div class="action-area">
-        <a href="Test_only_20260406.vcf" class="add-btn">存入通訊錄</a>
+        <a href="GuitarDuck.vcf" class="add-btn" onclick="checkWechat(event)">存入通訊錄</a>
         <a href="https://musicfriendly.com/" class="website-link">musicfriendly.com</a>
     </div>
 </div>
 
 <div id="wechat-overlay" onclick="hideWeChat()">
-    <p>請長按二維碼識別加好友</p>
-    <img src="guitar-duck-wechat.png" alt="WeChat QR Code">
-    <p>WeChat ID: 你的微信號</p>
-    <div class="close-hint">點擊任意位置關閉</div>
+    <p style="margin-bottom: 15px; font-weight: bold;">長按二維碼識別加好友</p>
+    
+    <img src="wechat-test.jpeg" alt="WeChat QR Code">
+    
+    <p>WeChat ID: <b>aquaeel</b></p>
+    <div class="copy-hint" onclick="copyID(event)">一鍵複製微信號</div>
+    <div style="font-size: 12px; color: #888; margin-top: 40px;">點擊任意位置關閉</div>
 </div>
 
 <script>
     function showWeChat() { document.getElementById('wechat-overlay').style.display = 'flex'; }
     function hideWeChat() { document.getElementById('wechat-overlay').style.display = 'none'; }
+
+    // 複製微信 ID 功能
+    function copyID(e) {
+        e.stopPropagation(); // 防止點擊按鈕時關閉彈窗
+        const id = 'aquaeel';
+        navigator.clipboard.writeText(id).then(() => {
+            alert('微信號 ' + id + ' 已複製！請前往微信搜尋加好友。');
+        });
+    }
+
+    // 檢測微信環境
+    function checkWechat(e) {
+        var ua = navigator.userAgent.toLowerCase();
+        if (ua.match(/MicroMessenger/i) == "micromessenger") {
+            // 微信不允許直接下載 VCF，給予提示
+            alert("微信內無法直接存入。請點擊右上角「...」並選擇「在瀏覽器打開」即可。");
+        }
+    }
 </script>
 
 </body>
