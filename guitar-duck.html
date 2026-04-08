@@ -1,78 +1,75 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-HK">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Guitar Duck | MUSICFRIENDLY</title>
     <style>
-        /* 禁止捲動與撐滿全螢幕 */
         * { box-sizing: border-box; }
+        
+        /* 背景底色 */
         body, html {
             margin: 0; padding: 0; width: 100%; height: 100%;
-            overflow: hidden; /* 核心：鎖定不捲動 */
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #ffffff; color: #000000;
+            background-color: #f0f2f5; /* 電腦版背景為淺灰色 */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             display: flex; align-items: center; justify-content: center;
         }
 
+        /* 核心：模擬手機版面 */
         .card-container {
-            width: 100%; height: 100%; max-width: 400px;
+            background-color: #ffffff;
+            width: 100%; 
+            height: 100%; 
+            max-width: 450px; /* 電腦上限制最大寬度，像手機一樣 */
+            margin: 0 auto;
             padding: 40px 25px;
-            display: flex; flex-direction: column;
-            justify-content: space-between; /* 自動均勻分配空間，確保不捲動 */
+            display: flex; 
+            flex-direction: column;
+            justify-content: space-between;
             text-align: center;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* 電腦版增加陰影質感 */
         }
 
-        /* 品牌頂部 */
-        .brand-header { 
-            font-size: 16px; 
-            letter-spacing: 3px; 
-            font-weight: 900; 
-            margin-bottom: 5px;
+        /* 當螢幕高度夠大時，限制名片高度避免拉得太長 */
+        @media (min-height: 800px) and (min-width: 500px) {
+            .card-container {
+                height: 800px;
+                border-radius: 30px; /* 電腦版顯示圓角 */
+            }
         }
+
+        /* 內容樣式 (參考 MusicFriendly 風格) */
+        .brand-header { font-size: 16px; letter-spacing: 3px; font-weight: 900; color: #000; }
         
-        /* 個人頭像 (建議上傳一張吉他鴨或同事的照片) */
         .profile-img {
-            width: 140px; height: 140px; border-radius: 50%;
+            width: 160px; height: 160px; border-radius: 50%;
             object-fit: cover; margin: 0 auto;
-            border: 1px solid #eee;
-            background-color: #f9f9f9;
+            border: 1px solid #eee; background-color: #f9f9f9;
         }
 
-        /* 姓名與職稱 */
-        .name-title h1 { font-size: 28px; margin: 10px 0 5px; font-weight: 800; }
+        .name-title h1 { font-size: 32px; margin: 15px 0 5px; font-weight: 800; }
         .name-title p { font-size: 14px; color: #666; margin: 0; letter-spacing: 1px; }
 
-        /* 聯絡細節 (完全對應你提供的資料) */
-        .contact-info { font-size: 15px; line-height: 1.6; margin: 15px 0; }
+        .contact-info { font-size: 16px; line-height: 1.8; margin: 20px 0; }
         .contact-link { color: #000; text-decoration: none; display: block; padding: 5px 0; }
+        
         .address-link { 
-            color: #4285F4; 
-            text-decoration: none; 
-            font-size: 12px; 
-            display: block; 
-            margin-top: 10px;
-            line-height: 1.4;
+            color: #4285F4; text-decoration: none; font-size: 13px; 
+            display: block; margin-top: 10px; line-height: 1.4;
         }
 
-        /* 底部按鈕區 */
         .action-area { width: 100%; }
         .add-btn {
             background-color: #000000; color: #ffffff;
-            width: 100%; padding: 18px 0; border-radius: 35px;
-            text-decoration: none; font-size: 17px; font-weight: bold;
+            width: 100%; padding: 20px 0; border-radius: 40px;
+            text-decoration: none; font-size: 18px; font-weight: bold;
             display: block; transition: 0.2s;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
-        .add-btn:active { transform: scale(0.96); opacity: 0.8; }
+        .add-btn:active { transform: scale(0.96); }
         
-        .website-link {
-            display: inline-block;
-            margin-top: 15px;
-            font-size: 13px;
-            color: #888;
-            text-decoration: none;
-        }
+        .website-link { display: inline-block; margin-top: 20px; font-size: 14px; color: #888; text-decoration: none; }
     </style>
 </head>
 <body>
@@ -92,7 +89,7 @@
         <a href="https://wa.me/85255785523" class="contact-link">WhatsApp: +852 5578 5523</a>
         <a href="mailto:enquiry@musicfriendly.com" class="contact-link">enquiry@musicfriendly.com</a>
         
-        <a href="https://www.google.com/maps/search/?api=1&query=Flat+D1,4/F,Ka+Ming+Court+Blocks+C&D,688-690+Castle+Peak+Rd,Lai+Chi+Kok" target="_self" class="address-link">
+        <a href="http://googleusercontent.com/maps.google.com/9" target="_blank" class="address-link">
             📍 Flat D1, 4/F, Ka Ming Court Blocks C&D, <br>688-690 Castle Peak Rd, Lai Chi Kok
         </a>
     </div>
