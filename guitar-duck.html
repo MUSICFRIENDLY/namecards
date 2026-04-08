@@ -4,38 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Guitar Duck | MUSICFRIENDLY</title>
+
+    <meta property="og:title" content="Guitar Duck | MUSICFRIENDLY">
+    <meta property="og:description" content="Marketing Manager - MUSICFRIENDLY. Click to save contact info.">
+    <meta property="og:image" content="https://musicfriendly.github.io/namecards/MF_logo.png">
+    <meta property="og:url" content="https://card.musicfriendly.com/guitar-duck.html">
+    <meta property="og:type" content="website">
+
     <style>
-        * { box-sizing: border-box; }
+        /* 基礎樣式重置 */
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         
         body, html {
             margin: 0; padding: 0; width: 100%; height: 100%;
-            background-color: #f0f2f5; 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #f0f2f5; /* 電腦版外框底色 */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             display: flex; align-items: center; justify-content: center;
         }
 
+        /* 名片容器 */
         .card-container {
             background-color: #ffffff;
             width: 100%; 
             height: 100%; 
-            max-width: 450px; 
+            max-width: 450px; /* 電腦版寬度限制 */
             margin: 0 auto;
-            padding: 25px 25px; /* 稍微縮減上下內距以騰出空間 */
+            padding: 30px 25px;
             display: flex; 
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: space-between; /* 均勻分佈內容，防止捲動 */
             text-align: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        @media (min-height: 800px) and (min-width: 500px) {
+        /* 當螢幕夠大時，模擬手機殼造型 */
+        @media (min-height: 750px) and (min-width: 500px) {
             .card-container {
-                height: 800px;
+                height: 780px;
                 border-radius: 30px;
             }
         }
 
-        /* 公司 Logo 區塊 - 大尺寸版 */
+        /* 1. 公司 Logo (已加大) */
         .brand-header { 
             height: 90px; 
             display: flex; 
@@ -50,34 +60,58 @@
             display: block;
         }
         
+        /* 2. 個人照片 */
         .profile-img {
-            width: 150px; height: 150px; border-radius: 50%;
-            object-fit: cover; margin: 0 auto;
-            border: 2px solid #f0f0f0;
+            width: 150px; 
+            height: 150px; 
+            border-radius: 50%;
+            object-fit: cover; 
+            margin: 0 auto;
+            border: 3px solid #f8f8f8;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
-        .name-title h1 { font-size: 30px; margin: 10px 0 5px; font-weight: 800; color: #333; }
+        /* 3. 姓名職稱 */
+        .name-title h1 { font-size: 30px; margin: 15px 0 5px; font-weight: 800; color: #1a1a1a; }
         .name-title p { font-size: 14px; color: #666; margin: 0; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; }
 
-        .contact-info { font-size: 16px; line-height: 1.7; margin: 15px 0; }
-        .contact-link { color: #000; text-decoration: none; display: block; padding: 3px 0; }
+        /* 4. 聯絡資訊 */
+        .contact-info { font-size: 16px; line-height: 1.8; margin: 15px 0; }
+        .contact-link { color: #000; text-decoration: none; display: block; padding: 4px 0; font-weight: 500; }
         
         .address-link { 
-            color: #4285F4; text-decoration: none; font-size: 13px; 
-            display: block; margin-top: 5px; line-height: 1.4;
+            color: #4285F4; 
+            text-decoration: none; 
+            font-size: 13px; 
+            display: block; 
+            margin-top: 8px; 
+            line-height: 1.4;
         }
 
+        /* 5. 底部按鈕 */
         .action-area { width: 100%; }
         .add-btn {
-            background-color: #000000; color: #ffffff;
-            width: 100%; padding: 18px 0; border-radius: 40px;
-            text-decoration: none; font-size: 18px; font-weight: bold;
-            display: block; transition: 0.2s;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            background-color: #000000; 
+            color: #ffffff;
+            width: 100%; 
+            padding: 18px 0; 
+            border-radius: 40px;
+            text-decoration: none; 
+            font-size: 18px; 
+            font-weight: bold;
+            display: block; 
+            transition: 0.2s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
-        .add-btn:active { transform: scale(0.96); }
+        .add-btn:active { transform: scale(0.96); opacity: 0.9; }
         
-        .website-link { display: inline-block; margin-top: 10px; font-size: 13px; color: #888; text-decoration: none; }
+        .website-link { 
+            display: inline-block; 
+            margin-top: 15px; 
+            font-size: 14px; 
+            color: #999; 
+            text-decoration: none; 
+        }
     </style>
 </head>
 <body>
@@ -99,7 +133,7 @@
         <a href="https://wa.me/85255785523" class="contact-link">WhatsApp: +852 5578 5523</a>
         <a href="mailto:enquiry@musicfriendly.com" class="contact-link">enquiry@musicfriendly.com</a>
         
-        <a href="https://www.google.com/maps/search/?api=1&query=Flat+D1,+4/F,+Ka+Ming+Court+Blocks+C%26D,+688-690+Castle+Peak+Rd,+Lai+Chi+Kok" target="_blank" class="address-link">
+        <a href="https://www.google.com/maps/search/?api=1&query=Ka+Ming+Court+688-690+Castle+Peak+Rd+Lai+Chi+Kok" target="_blank" class="address-link">
             📍 Flat D1, 4/F, Ka Ming Court Blocks C&D, <br>688-690 Castle Peak Rd, Lai Chi Kok
         </a>
     </div>
