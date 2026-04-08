@@ -7,58 +7,71 @@
     <style>
         * { box-sizing: border-box; }
         
-        /* 背景底色 */
+        /* 背景與基本設定 */
         body, html {
             margin: 0; padding: 0; width: 100%; height: 100%;
-            background-color: #f0f2f5; /* 電腦版背景為淺灰色 */
+            background-color: #f0f2f5; 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             display: flex; align-items: center; justify-content: center;
         }
 
-        /* 核心：模擬手機版面 */
+        /* 名片容器 */
         .card-container {
             background-color: #ffffff;
             width: 100%; 
             height: 100%; 
-            max-width: 450px; /* 電腦上限制最大寬度，像手機一樣 */
+            max-width: 450px; 
             margin: 0 auto;
-            padding: 40px 25px;
+            padding: 30px 25px;
             display: flex; 
             flex-direction: column;
             justify-content: space-between;
             text-align: center;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* 電腦版增加陰影質感 */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        /* 當螢幕高度夠大時，限制名片高度避免拉得太長 */
+        /* 電腦版圓角設定 */
         @media (min-height: 800px) and (min-width: 500px) {
             .card-container {
                 height: 800px;
-                border-radius: 30px; /* 電腦版顯示圓角 */
+                border-radius: 30px;
             }
         }
 
-        /* 內容樣式 (參考 MusicFriendly 風格) */
-        .brand-header { font-size: 16px; letter-spacing: 3px; font-weight: 900; color: #000; }
+        /* 1. 公司 Logo 區塊 */
+        .brand-header { 
+            height: 60px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin-bottom: 10px;
+        }
+        .company-logo { 
+            max-height: 100%; 
+            max-width: 220px;
+            width: auto;
+            display: block;
+        }
         
+        /* 2. 個人頭像區塊 */
         .profile-img {
             width: 160px; height: 160px; border-radius: 50%;
             object-fit: cover; margin: 0 auto;
-            border: 1px solid #eee; background-color: #f9f9f9;
+            border: 2px solid #f0f0f0;
         }
 
-        .name-title h1 { font-size: 32px; margin: 15px 0 5px; font-weight: 800; }
-        .name-title p { font-size: 14px; color: #666; margin: 0; letter-spacing: 1px; }
+        .name-title h1 { font-size: 32px; margin: 15px 0 5px; font-weight: 800; color: #333; }
+        .name-title p { font-size: 14px; color: #666; margin: 0; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; }
 
         .contact-info { font-size: 16px; line-height: 1.8; margin: 20px 0; }
-        .contact-link { color: #000; text-decoration: none; display: block; padding: 5px 0; }
+        .contact-link { color: #000; text-decoration: none; display: block; padding: 4px 0; }
         
         .address-link { 
             color: #4285F4; text-decoration: none; font-size: 13px; 
-            display: block; margin-top: 10px; line-height: 1.4;
+            display: block; margin-top: 8px; line-height: 1.4;
         }
 
+        /* 3. 底部按鈕區塊 */
         .action-area { width: 100%; }
         .add-btn {
             background-color: #000000; color: #ffffff;
@@ -69,15 +82,17 @@
         }
         .add-btn:active { transform: scale(0.96); }
         
-        .website-link { display: inline-block; margin-top: 20px; font-size: 14px; color: #888; text-decoration: none; }
+        .website-link { display: inline-block; margin-top: 15px; font-size: 14px; color: #888; text-decoration: none; }
     </style>
 </head>
 <body>
 
 <div class="card-container">
-    <div class="brand-header">MUSICFRIENDLY</div>
+    <div class="brand-header">
+        <img src="MF_logo.png" class="company-logo" alt="MUSICFRIENDLY">
+    </div>
 
-    <img src="https://via.placeholder.com/150" class="profile-img" alt="Guitar Duck">
+    <img src="guitar-duck.png" class="profile-img" alt="Guitar Duck">
 
     <div class="name-title">
         <h1>Guitar Duck</h1>
@@ -89,7 +104,7 @@
         <a href="https://wa.me/85255785523" class="contact-link">WhatsApp: +852 5578 5523</a>
         <a href="mailto:enquiry@musicfriendly.com" class="contact-link">enquiry@musicfriendly.com</a>
         
-        <a href="http://googleusercontent.com/maps.google.com/9" target="_blank" class="address-link">
+        <a href="https://www.google.com/maps/search/?api=1&query=你的完整公司地址0" target="_blank" class="address-link">
             📍 Flat D1, 4/F, Ka Ming Court Blocks C&D, <br>688-690 Castle Peak Rd, Lai Chi Kok
         </a>
     </div>
