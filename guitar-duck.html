@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Guitar Duck | MUSICFRIENDLY</title>
     <style>
+        /* --- 基礎樣式（保持不變） --- */
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body, html {
             margin: 0; padding: 0; width: 100%; height: 100%;
@@ -12,32 +13,91 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             display: flex; align-items: center; justify-content: center;
         }
+
+        /* --- 名片容器：加入背景圖 --- */
         .card-container {
-            background-image: url('bg.jpg');
-            background-size: cover; 
+            /* 加入你的背景圖 */
+            background-image: url('bg.jpg'); /* 請確保檔名正確 */
+            background-size: cover;
             background-position: center;
+            
+            /* 其他容器設定 */
             background-color: #ffffff;
             width: 100%; height: 100%; max-width: 450px;
-            margin: 0 auto; padding: 30px 25px;
+            margin: 0 auto;
+            /* 調整 padding，不要擋住頂部 Logo 和底部按鈕 */
+            padding: 30px 25px 20px 25px; 
             display: flex; flex-direction: column; justify-content: space-between;
             text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            /* 如果要換背景圖，在這裡加入 background-image */
         }
+
         @media (min-height: 750px) and (min-width: 500px) {
             .card-container { height: 780px; border-radius: 30px; }
         }
+
+        /* --- 頂部區域 --- */
         .brand-header { height: 80px; display: flex; align-items: center; justify-content: center; margin-bottom: 5px; }
         .company-logo { max-height: 100%; max-width: 250px; width: auto; }
+        
         .profile-img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin: 0 auto; border: 3px solid #f8f8f8; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .emp-id { font-size: 12px; color: #999; margin-bottom: -10px; letter-spacing: 2px; font-weight: bold; }
-        .name-title h1 { font-size: 30px; margin: 15px 0 5px; font-weight: 800; color: #1a1a1a; }
-        .name-title p { font-size: 14px; color: #666; margin: 0; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; }
-        .contact-info { font-size: 16px; line-height: 1.8; margin: 10px 0; }
-        .contact-link { color: #000; text-decoration: none; display: block; padding: 4px 0; font-weight: 500; }
-        .address-link { color: #4285F4; text-decoration: none; font-size: 13px; display: block; margin-top: 8px; line-height: 1.4; }
-        .action-area { width: 100%; }
-        .add-btn { background-color: #000; color: #fff; width: 100%; padding: 18px 0; border-radius: 40px; text-decoration: none; font-size: 18px; font-weight: bold; display: block; transition: 0.2s; }
-        .website-link { display: inline-block; margin-top: 15px; font-size: 14px; color: #999; text-decoration: none; }
+
+        .emp-id { font-size: 12px; color: #bbb; margin-top: 15px; letter-spacing: 2px; font-weight: bold; }
+        
+        /* 將名字和職稱包在一起，方便調整垂直位置 */
+        .name-title-block {
+            margin-top: 5px;
+            margin-bottom: 10px; /* 控制名字區域到橫條區域的距離 */
+        }
+        .name-title-block h1 { font-size: 28px; margin: 0 0 2px 0; font-weight: 800; color: #1a1a1a; }
+        .name-title-block p { font-size: 13px; color: #666; margin: 0; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; }
+
+        /* ========================================= */
+        /* --- 🎯 核心修改區域：聯絡資訊對齊橫條 --- */
+        /* ========================================= */
+        .contact-info {
+            font-size: 16px;
+            margin: 0; /* 移除外邊距 */
+            padding: 0;
+            
+            /* --- 關鍵 1：鎖定統一的行高 --- */
+            /* 根據圖片，Mobile, WhatsApp, Email, 地址各佔一行。
+               白、黃、白、黃條紋。這個數值（1.8或1.9）需要讓字落在條紋中間 */
+            line-height: 1.8; 
+            
+            /* --- 關鍵 2：精確垂直微調 --- */
+            /* 使用 translateY 來微調整個區塊的上下位置，
+               直到第一行 Mobile: 剛好落在第一個黃色橫條中間。 */
+            transform: translateY(2px); 
+        }
+
+        .contact-link {
+            color: #000;
+            text-decoration: none;
+            display: block;
+            padding: 0; /* 移除 Padding，完全依靠 line-height */
+            font-weight: 500;
+        }
+        
+        /* 關鍵 3：修正地址連結 --- */
+        .address-link {
+            color: #4285F4;
+            text-decoration: none;
+            font-size: 13px;
+            display: block;
+            
+            /* 必須移除原本的 margin-top: 8px; 
+               確保地址自動掉落到最後一條黃色橫條 */
+            margin-top: 0; 
+            line-height: 1.4; /* 地址內部的行高，防止兩行地址太開 */
+            padding-top: 2px; /* 輕微微調地址內文在條紋內的位置 */
+        }
+        /* ========================================= */
+
+        /* --- 底部區域 --- */
+        .action-area { width: 100%; margin-top: 15px; }
+        .add-btn { background-color: #000; color: #fff; width: 100%; padding: 18px 0; border-radius: 40px; text-decoration: none; font-size: 18px; font-weight: bold; display: block; transition: 0.2s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .add-btn:active { transform: scale(0.96); opacity: 0.9; }
+        .website-link { display: inline-block; margin-top: 10px; font-size: 13px; color: #ccc; text-decoration: none; }
     </style>
 </head>
 <body>
@@ -49,8 +109,9 @@
 
     <img src="guitar-duck.png" class="profile-img" alt="Guitar Duck">
 
-    <div class="name-title">
-        <div class="emp-id">MF-8888</div> <h1>Guitar Duck</h1>
+    <div class="name-title-block">
+        <div class="emp-id">MF-8888</div>
+        <h1>Guitar Duck</h1>
         <p>Marketing Manager</p>
     </div>
 
@@ -58,6 +119,7 @@
         <a href="tel:+85255785523" class="contact-link">Mobile: +852 5578 5523</a>
         <a href="https://wa.me/85255785523" class="contact-link">WhatsApp: +852 5578 5523</a>
         <a href="mailto:enquiry@musicfriendly.com" class="contact-link">Email: enquiry@musicfriendly.com</a>
+        
         <a href="https://maps.app.goo.gl/uX3L9GZ7pB6mYn8A7" target="_blank" class="address-link">
             📍 Flat D1, 4/F, Ka Ming Court Blocks C&D, <br>688-690 Castle Peak Rd, Lai Chi Kok
         </a>
