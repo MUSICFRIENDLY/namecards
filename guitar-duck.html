@@ -28,53 +28,63 @@
             .card-container { height: 780px; border-radius: 30px; }
         }
 
-        /* --- 頂部區域 --- */
         .brand-header { height: 80px; display: flex; align-items: center; justify-content: center; }
         .company-logo { max-height: 100%; max-width: 250px; width: auto; }
         .profile-img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin: 0 auto; border: 3px solid #f8f8f8; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
 
-        /* ========================================= */
-        /* 🛠️ 間距調整專區 🛠️ */
-        /* ========================================= */
+        .name-title { margin-top: 15px; margin-bottom: 0px; }
+        .emp-id { font-size: 12px; color: #999; letter-spacing: 2px; font-weight: bold; }
+        .name-title h1 { font-size: 30px; margin: 5px 0; font-weight: 800; color: #1a1a1a; }
+        .name-title p { font-size: 14px; color: #666; margin: 0; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; }
 
-        /* 1. 名字區塊位置：調整頂部 margin 讓名字上下移動 */
-        .name-title { 
-            margin-top: 15px;  /* 👈 改這裡：名字與照片的距離 */
-            margin-bottom: 0px; 
+        /* ========================================= */
+        /* 🛠️ 新增：左右佈局容器 🛠️ */
+        /* ========================================= */
+        .info-qr-wrapper {
+            display: flex;
+            align-items: center;    /* 垂直居中對齊 */
+            justify-content: space-between; /* 左右撐開 */
+            margin-top: 20px;
+            text-align: left;       /* 確保文字靠左 */
         }
 
-        /* 2. 聯絡資訊區塊位置：調整整個區塊的上下位置 */
         .contact-info { 
-            margin-top: 20px;  /* 👈 改這裡：讓 Mobile/WhatsApp 整組上下移動 */
-            margin-bottom: 10px; 
+            flex: 1;               /* 佔據剩餘空間 */
         }
 
-        /* 3. 文字行距：調整這個數值來對齊條紋 */
         .contact-link { 
-            padding: 5px 0;    /* 👈 改這裡：數值越大，每一行字分得越開 */
+            padding: 4px 0;
             color: #000; 
             text-decoration: none; 
             display: block; 
             font-weight: 500; 
-            font-size: 16px;
+            font-size: 15px;
         }
 
+        .qr-side {
+            margin-left: 15px;      /* 文字和 QR 碼之間的間距 */
+        }
+
+        .qr-img {
+            width: 100px;           /* QR Code 大小 */
+            height: 100px;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
         /* ========================================= */
 
-        .emp-id { font-size: 12px; color: #999; letter-spacing: 2px; font-weight: bold; }
-        .name-title h1 { font-size: 30px; margin: 5px 0; font-weight: 800; color: #1a1a1a; }
-        .name-title p { font-size: 14px; color: #666; margin: 0; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; }
-        
         .address-link { 
             color: #4285F4; 
             text-decoration: none; 
-            font-size: 13px; 
+            font-size: 12px; 
             display: block; 
-            margin-top: 10px; /* 👈 地址單獨的間距 */
-            line-height: 1.4; 
+            margin-top: 10px;
+            line-height: 1.4;
+            text-align: left; /* 地址也靠左 */
         }
 
-        .action-area { width: 100%; }
+        .action-area { width: 100%; margin-top: 10px; }
         .add-btn { background-color: #000; color: #fff; width: 100%; padding: 18px 0; border-radius: 40px; text-decoration: none; font-size: 18px; font-weight: bold; display: block; transition: 0.2s; }
         .website-link { display: inline-block; margin-top: 15px; font-size: 14px; color: #999; text-decoration: none; }
     </style>
@@ -94,14 +104,21 @@
         <p>Marketing Manager</p>
     </div>
 
-    <div class="contact-info">
-        <a href="tel:+85255785523" class="contact-link">Mobile: +852 5578 5523</a>
-        <a href="https://wa.me/85255785523" class="contact-link">WhatsApp: +852 5578 5523</a>
-        <a href="mailto:enquiry@musicfriendly.com" class="contact-link">Email: enquiry@musicfriendly.com</a>
-        <a href="https://maps.app.goo.gl/uX3L9GZ7pB6mYn8A7" target="_blank" class="address-link">
-            📍 Flat D1, 4/F, Ka Ming Court Blocks C&D, <br>688-690 Castle Peak Rd, Lai Chi Kok
-        </a>
+    <div class="info-qr-wrapper">
+        <div class="contact-info">
+            <a href="tel:+85255785523" class="contact-link">Mobile: +852 5578 5523</a>
+            <a href="https://wa.me/85255785523" class="contact-link">WhatsApp: +852 5578 5523</a>
+            <a href="mailto:enquiry@musicfriendly.com" class="contact-link">Email: enquiry@musicfriendly.com</a>
+        </div>
+        
+        <div class="qr-side">
+            <img src="guitar_duck_QRcode.png" class="qr-img" alt="QR Code">
+        </div>
     </div>
+
+    <a href="https://maps.app.goo.gl/uX3L9GZ7pB6mYn8A7" target="_blank" class="address-link">
+        📍 Flat D1, 4/F, Ka Ming Court Blocks C&D, <br>688-690 Castle Peak Rd, Lai Chi Kok
+    </a>
 
     <div class="action-area">
         <a href="Test%20only_20260406.vcf" class="add-btn">ADD TO CONTACTS</a>
