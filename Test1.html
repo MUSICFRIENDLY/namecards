@@ -28,9 +28,18 @@
             .card-container { height: 780px; border-radius: 30px; }
         }
 
-        .brand-header { height: 80px; display: flex; align-items: center; justify-content: center; }
-        .company-logo { max-height: 100%; max-width: 250px; width: auto; }
-        .profile-img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin: 0 auto; border: 3px solid #f8f8f8; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        /* 移除原本 logo 佔據的空間 */
+        .brand-header { height: 80px; visibility: hidden; } 
+
+        .profile-img { 
+            width: 150px; 
+            height: 150px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            margin: 57px auto 0; /* 下移約 1.5cm (1.5cm ≈ 57px) */
+            border: 3px solid #f8f8f8; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+        }
 
         .name-title { margin-top: 15px; margin-bottom: 0px; }
         .emp-id { font-size: 12px; color: #999; letter-spacing: 2px; font-weight: bold; }
@@ -39,16 +48,13 @@
 
         .info-qr-wrapper {
             display: flex;
-            align-items: center;    /* 垂直居中對齊 */
-            justify-content: space-between; /* 左右撐開 */
+            align-items: center;
+            justify-content: space-between;
             margin-top: 20px;
-            text-align: left;       /* 確保文字靠左 */
+            text-align: left;
         }
 
-        .contact-info { 
-            flex: 1;               /* 佔據剩餘空間 */
-        }
-
+        .contact-info { flex: 1; }
         .contact-link { 
             padding: 4px 0;
             color: #000; 
@@ -58,18 +64,14 @@
             font-size: 15px;
         }
 
-        .qr-side {
-            margin-left: 15px;      /* 文字和 QR 碼之間的間距 */
-        }
-
+        .qr-side { margin-left: 15px; }
         .qr-img {
-            width: 100px;           /* QR Code 大小 */
+            width: 100px;
             height: 100px;
             border: 2px solid #fff;
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-        /* ========================================= */
 
         .address-link { 
             color: #4285F4; 
@@ -78,7 +80,7 @@
             display: block; 
             margin-top: 10px;
             line-height: 1.4;
-            text-align: left; /* 地址也靠左 */
+            text-align: left;
         }
 
         .action-area { width: 100%; margin-top: 10px; }
@@ -89,9 +91,7 @@
 <body>
 
 <div class="card-container">
-    <div class="brand-header">
-        <img src="MF_logo.png" class="company-logo" alt="MUSICFRIENDLY">
-    </div>
+    <div class="brand-header"></div>
 
     <img src="Ricky.jpg" class="profile-img" alt="Ricky Kwong">
 
@@ -113,7 +113,7 @@
         </div>
     </div>
 
-    <a href="https://www.google.com/maps/search/?api=1&query=Flat+D1+4/F+Ka+Ming+Court+688+Castle+Peak+Rd+Lai+Chi+Kok" target="_blank" class="address-link" target="_blank" class="address-link">
+    <a href="https://www.google.com/maps/search/?api=1&query=Flat+D1,4/F,Ka+Ming+Court" target="_blank" class="address-link">
         📍 Flat D1, 4/F, Ka Ming Court Blocks C&D, <br>688-690 Castle Peak Rd, Lai Chi Kok
     </a>
 
